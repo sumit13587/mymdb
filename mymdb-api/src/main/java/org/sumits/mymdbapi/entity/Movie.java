@@ -5,6 +5,7 @@ import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 import java.util.Date;
+import java.util.List;
 
 @Entity
 @Data
@@ -44,34 +45,33 @@ public class Movie {
     @Column(name = "vote_count")
     private int voteCount;
 
-    // TODO Need to implement transaction management to enable lazy init for entity associations
-//    @OneToMany
-//    @JoinColumn(name = "movie_id")
-//    private List<MovieCast> movieCasts;
-//
-//    @OneToMany
-//    @JoinColumn(name = "movie_id")
-//    private List<MovieCrew> movieCrews;
-//
-//    @OneToMany
-//    @JoinColumn(name = "movie_id")
-//    private List<MovieCompany> movieCompanies;
-//
-//    @OneToMany
-//    @JoinColumn(name = "movie_id")
-//    private List<MovieGenre> movieGenres;
-//
-//    @OneToMany
-//    @JoinColumn(name = "movie_id")
-//    private List<MovieKeywords> movieKeywords;
-//
-//    @OneToMany
-//    @JoinColumn(name = "movie_id")
-//    private List<MovieLanguages> movieLanguages;
-//
-//    @OneToMany
-//    @JoinColumn(name = "movie_id")
-//    private List<ProductionCountry> productionCountries;
+    @OneToMany
+    @JoinColumn(name = "movie_id")
+    private List<MovieCast> movieCasts;
+
+    @OneToMany
+    @JoinColumn(name = "movie_id")
+    private List<MovieCrew> movieCrews;
+
+    @OneToMany
+    @JoinColumn(name = "movie_id")
+    private List<MovieCompany> movieCompanies;
+
+    @OneToMany
+    @JoinColumn(name = "movie_id")
+    private List<MovieGenre> movieGenres;
+
+    @OneToMany
+    @JoinColumn(name = "movie_id")
+    private List<MovieKeywords> movieKeywords;
+
+    @OneToMany
+    @JoinColumn(name = "movie_id")
+    private List<MovieLanguages> movieLanguages;
+
+    @OneToMany
+    @JoinColumn(name = "movie_id")
+    private List<ProductionCountry> productionCountries;
 
     public int getMovieId() {
         return movieId;
@@ -177,59 +177,59 @@ public class Movie {
         this.voteCount = voteCount;
     }
 
-//    public List<MovieCast> getMovieCasts() {
-//        return movieCasts;
-//    }
-//
-//    public void setMovieCasts(List<MovieCast> movieCasts) {
-//        this.movieCasts.addAll(movieCasts);
-//    }
-//
-//    public List<MovieCrew> getMovieCrews() {
-//        return movieCrews;
-//    }
-//
-//    public void setMovieCrews(List<MovieCrew> movieCrews) {
-//        this.movieCrews.addAll(movieCrews);
-//    }
-//
-//    public List<MovieCompany> getMovieCompanies() {
-//        return movieCompanies;
-//    }
-//
-//    public void setMovieCompanies(List<MovieCompany> movieCompanies) {
-//        this.movieCompanies.addAll(movieCompanies);
-//    }
-//
-//    public List<MovieGenre> getMovieGenres() {
-//        return movieGenres;
-//    }
-//
-//    public void setMovieGenres(List<MovieGenre> movieGenres) {
-//        this.movieGenres.addAll(movieGenres);
-//    }
-//
-//    public List<MovieKeywords> getMovieKeywords() {
-//        return movieKeywords;
-//    }
-//
-//    public void setMovieKeywords(List<MovieKeywords> movieKeywords) {
-//        this.movieKeywords.addAll(movieKeywords);
-//    }
-//
-//    public List<MovieLanguages> getMovieLanguages() {
-//        return movieLanguages;
-//    }
-//
-//    public void setMovieLanguages(List<MovieLanguages> movieLanguages) {
-//        this.movieLanguages.addAll(movieLanguages);
-//    }
-//
-//    public List<ProductionCountry> getProductionCountries() {
-//        return productionCountries;
-//    }
-//
-//    public void setProductionCountries(List<ProductionCountry> productionCountries) {
-//        this.productionCountries.addAll(productionCountries);
-//    }
+    public List<MovieCast> getMovieCasts() {
+        return movieCasts;
+    }
+
+    public void setMovieCasts(List<MovieCast> movieCasts) {
+        this.movieCasts.addAll(movieCasts);
+    }
+
+    public List<MovieCrew> getMovieCrews() {
+        return movieCrews;
+    }
+
+    public void setMovieCrews(List<MovieCrew> movieCrews) {
+        this.movieCrews.addAll(movieCrews);
+    }
+
+    public List<MovieCompany> getMovieCompanies() {
+        return movieCompanies;
+    }
+
+    public void setMovieCompanies(List<MovieCompany> movieCompanies) {
+        this.movieCompanies.addAll(movieCompanies);
+    }
+
+    public List<MovieGenre> getMovieGenres() {
+        return movieGenres;
+    }
+
+    public void setMovieGenres(List<MovieGenre> movieGenres) {
+        this.movieGenres.addAll(movieGenres);
+    }
+
+    public List<MovieKeywords> getMovieKeywords() {
+        return movieKeywords;
+    }
+
+    public void setMovieKeywords(List<MovieKeywords> movieKeywords) {
+        this.movieKeywords.addAll(movieKeywords);
+    }
+
+    public List<MovieLanguages> getMovieLanguages() {
+        return movieLanguages;
+    }
+
+    public void setMovieLanguages(List<MovieLanguages> movieLanguages) {
+        this.movieLanguages.addAll(movieLanguages);
+    }
+
+    public List<ProductionCountry> getProductionCountries() {
+        return productionCountries;
+    }
+
+    public void setProductionCountries(List<ProductionCountry> productionCountries) {
+        this.productionCountries.addAll(productionCountries);
+    }
 }
