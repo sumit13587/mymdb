@@ -2,6 +2,7 @@ import { Component, ViewChild, OnInit } from '@angular/core';
 import { MovieService } from '../movie.service'
 import { MatTableDataSource } from '@angular/material/table';
 import { MatSort } from '@angular/material/sort';
+import { MatPaginator } from '@angular/material/paginator';
 
 @Component({
   selector: 'app-movie-list',
@@ -14,6 +15,7 @@ export class MovieListComponent {
   displayedColumns: string[] = ['movieId', 'title', 'status', 'popularity', 'runtime', 'voteAverage', 'voteCount'];
   dataSource;
   @ViewChild(MatSort) sort: MatSort;
+  @ViewChild(MatPaginator) paginator: MatPaginator;
 
   constructor(private movieService: MovieService) { }
 
@@ -22,6 +24,7 @@ export class MovieListComponent {
       this.movies = data;
       this.dataSource = new MatTableDataSource(this.movies);
       this.dataSource.sort = this.sort;
+      this.dataSource.paginator = this.paginator;
     });
   }
 
