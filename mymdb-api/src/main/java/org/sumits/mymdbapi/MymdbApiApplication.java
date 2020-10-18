@@ -12,9 +12,4 @@ public class MymdbApiApplication {
 	public static void main(String[] args) {
 		SpringApplication.run(MymdbApiApplication.class, args);
 	}
-
-	@Bean
-	ApplicationRunner init(MovieRepository repository) {
-		return args -> {repository.findAll().forEach(System.out::println);};
-	}
 }
