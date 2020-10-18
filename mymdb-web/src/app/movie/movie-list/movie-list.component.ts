@@ -25,7 +25,22 @@ export class MovieListComponent {
       this.dataSource = new MatTableDataSource(this.movies);
       this.dataSource.sort = this.sort;
       this.dataSource.paginator = this.paginator;
+      this.dataSource.filterPredicate = this.filterStrategy;
     });
+  }
+
+  filterStrategy(data, filter: string): boolean {
+    return data.movieId === filter ||
+                  data.title.toLowerCase().includes(filter) ||
+                  data.movieStatus.toLowerCase() === filter ||
+                  data.runtime.toString() === filter ||
+                  data.voteAverage.toString() === filter ||
+                  data.voteCount.toString() == filter ||
+                  data.popularity.toString() === filter;
+  }
+
+  applyFilter(filterText: string) {
+    this.dataSource.filter = filterText.trim().toLowerCase();
   }
 
 }
