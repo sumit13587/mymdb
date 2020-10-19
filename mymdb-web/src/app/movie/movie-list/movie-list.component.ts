@@ -14,7 +14,7 @@ import {Location, LocationStrategy, PathLocationStrategy} from '@angular/common'
 export class MovieListComponent {
 
   movies: Array<any>;
-  displayedColumns: string[] = ['movieId', 'title', 'status', 'popularity', 'runtime', 'voteAverage', 'voteCount', 'linkToDetails'];
+  displayedColumns: string[] = ['movieId', 'title', 'status', 'popularity', 'runtime', 'voteAverage', 'voteCount', 'linkToDetails', 'deleteLink'];
   dataSource;
   @ViewChild(MatSort) sort: MatSort;
   @ViewChild(MatPaginator) paginator: MatPaginator;
@@ -48,6 +48,12 @@ export class MovieListComponent {
   findByActor(actorName: string) {
     this.movieService.findByActor(actorName).subscribe(data => {
       this.movies = data;
+    });
+  }
+
+  deleteMovie(movieId: number) {
+    this.movieService.deleteMovie(movieId).subscribe(data => {
+      console.log("Is the movie deleted?");
     });
   }
 
