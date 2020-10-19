@@ -1,7 +1,20 @@
 <div class="content" style="width:93%; margin-left: 50px; margin-right: 50px;">
-  <mat-form-field>
-    <input (keyup)="applyFilter($event.target.value)" matInput placeholder="Search Text"/>
-  </mat-form-field>
+  <form layout layout-align="center" layout-padding>
+    <div>
+      <mat-form-field>
+        <input (keyup)="applyFilter($event.target.value)" matInput placeholder="Search Text"/>
+      </mat-form-field>
+      <mat-form-field [style.width.px]=400 class="example-full-width">
+        <input #actorToSearch matInput placeholder="Search By Actor/Actress Name"/>
+      </mat-form-field>
+      <button mat-button class="md-raised" (click)="findByActor(actorToSearch.value)">
+        <mat-icon class="material-icons">search</mat-icon>
+      </button>
+      <button mat-button [style.margin-left.px]=450 class="md-raised">
+        <mat-icon class="material-icons">add</mat-icon>
+      </button>
+    </div>
+  </form>
   <div class="mat-elevation-z8" style="width: 100%">
     <table mat-table [dataSource]="dataSource" style="width: 100%" matSort>
 

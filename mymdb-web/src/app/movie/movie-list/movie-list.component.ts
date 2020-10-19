@@ -49,4 +49,18 @@ export class MovieListComponent {
     this.location.replaceState('/details/' + movieId);
   }
 
+  findByActor(actorName: string) {
+    if(!actorName) {
+      return;
+    }
+    this.movieService.findByActor(actorName).subscribe(data => {
+      this.movies = data;
+      this.dataSource = new MatTableDataSource(this.movies);
+      this.dataSource = new MatTableDataSource(this.movies);
+      this.dataSource.sort = this.sort;
+      this.dataSource.paginator = this.paginator;
+      this.dataSource.filterPredicate = this.filterStrategy;
+    });
+  }
+
 }

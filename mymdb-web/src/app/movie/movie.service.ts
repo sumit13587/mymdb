@@ -18,4 +18,8 @@ export class MovieService {
     return this.http.get('//localhost:8080/movies/view?movieId=' + movieId);
   }
 
+  findByActor(actorName: string): Observable<any> {
+    return this.http.get('//localhost:8080/movies/findByActor?personName=' + actorName);
+  }
+
 }
