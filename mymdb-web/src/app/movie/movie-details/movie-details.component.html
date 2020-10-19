@@ -1,6 +1,18 @@
+<nav>
+  <ul>
+    <li><a routerLink="/list" routerLinkActive="active">Back to Movie LIst</a></li>
+  </ul>
+</nav>
 <div class="content" style="width:93%; margin-left: 50px; margin-right: 50px;">
-  <h2>movie-details works!</h2>
+  <h1>{{movieDetails.title}}</h1>
+  <h3>Summary:</h3>
   <p>Movie ID: {{movieDetails.movieId}}</p>
-  <p>Title: {{movieDetails.title}}</p>
   <p>Budget: {{movieDetails.budget}}</p>
+  <p>Home Page: {{movieDetails.homepage}}</p>
+  <p>Runtime: {{movieDetails.runtime}}</p>
+  <p>Release Date: {{movieDetails.releaseDate}}</p>
+  <p>Vote Count: {{movieDetails.voteCount}}</p>
+  <p>Vote Average: {{movieDetails.voteAverage}}</p>
+  <p>Popularity: {{movieDetails.popularity}}</p>
+  <p>Country: {{movieDetails.productionCountry.country.countryName}}</p>
 </div>
