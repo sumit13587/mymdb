@@ -10,8 +10,12 @@ export class MovieService {
   constructor(private http: HttpClient) {
   }
 
-  getAll(): Observable<any> {
+  listAll(): Observable<any> {
     return this.http.get('//localhost:8080/movies/list');
+  }
+
+  getMovieDetails(movieId: number): Observable<any> {
+    return this.http.get('//localhost:8080/movies/view?movieId=' + movieId);
   }
 
 }

@@ -3,11 +3,13 @@ import { MovieService } from '../movie.service'
 import { MatTableDataSource } from '@angular/material/table';
 import { MatSort } from '@angular/material/sort';
 import { MatPaginator } from '@angular/material/paginator';
+import {Location, LocationStrategy, PathLocationStrategy} from '@angular/common';
 
 @Component({
   selector: 'app-movie-list',
   templateUrl: './movie-list.component.html',
-  styleUrls: ['./movie-list.component.scss']
+  styleUrls: ['./movie-list.component.scss'],
+  providers: [Location, {provide: LocationStrategy, useClass: PathLocationStrategy}]
 })
 export class MovieListComponent {
 
@@ -17,10 +19,10 @@ export class MovieListComponent {
   @ViewChild(MatSort) sort: MatSort;
   @ViewChild(MatPaginator) paginator: MatPaginator;
 
-  constructor(private movieService: MovieService) { }
+  constructor(private movieService: MovieService, private location: Location) { }
 
   ngOnInit() {
-    this.movieService.getAll().subscribe(data => {
+    this.movieService.listAll().subscribe(data => {
       this.movies = data;
       this.dataSource = new MatTableDataSource(this.movies);
       this.dataSource.sort = this.sort;
@@ -41,6 +43,10 @@ export class MovieListComponent {
 
   applyFilter(filterText: string) {
     this.dataSource.filter = filterText.trim().toLowerCase();
+  }
+
+  viewMovieDetails(movieId: number) {
+    this.location.replaceState('/details/' + movieId);
   }
 
 }
