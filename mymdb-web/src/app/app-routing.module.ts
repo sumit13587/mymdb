@@ -1,10 +1,36 @@
 import { NgModule } from '@angular/core';
-import { Routes, RouterModule } from '@angular/router';
+import { RouterModule, Routes } from '@angular/router';
 
-const routes: Routes = [];
+import { MovieListComponent } from './movie/movie-list/movie-list.component';
+import { MovieDetailsComponent } from './movie/movie-details/movie-details.component';
+import { PageNotFoundComponent } from './page-not-found/page-not-found.component'
+
+const appRoutes: Routes = [
+  {
+    path: 'list',
+    component: MovieListComponent
+  },
+  {
+    path: 'details/:movieId',
+    component: MovieDetailsComponent
+  },
+  {
+    path: '**',
+    component: PageNotFoundComponent
+  }
+];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+  imports: [
+    RouterModule.forRoot(
+      appRoutes,
+      {
+        enableTracing: false, // <-- debugging purposes only
+      }
+    )
+  ],
+  exports: [
+    RouterModule
+  ]
 })
 export class AppRoutingModule { }

@@ -10,11 +10,15 @@ import { MatInputModule } from '@angular/material/input';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { MovieListComponent } from './movie/movie-list/movie-list.component';
+import { MovieDetailsComponent } from './movie/movie-details/movie-details.component';
+import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    MovieListComponent
+    MovieListComponent,
+    MovieDetailsComponent,
+    PageNotFoundComponent
   ],
   imports: [
     BrowserModule,
