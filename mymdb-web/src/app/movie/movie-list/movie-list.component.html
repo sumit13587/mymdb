@@ -53,8 +53,19 @@
         <td mat-cell *matCellDef="let movie"> {{movie.voteCount}}</td>
       </ng-container>
 
+      <ng-container matColumnDef="linkToDetails">
+        <th mat-header-cell *matHeaderCellDef></th>
+        <td mat-cell *matCellDef="let movie">
+          <a href="/details/{{movie.movieId}}">
+            <span class="material-icons">
+              open_in_browser
+            </span>
+          </a>
+        </td>
+      </ng-container>
+
       <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-      <tr mat-row *matRowDef="let movie; columns: displayedColumns;" (click)="viewMovieDetails(movie.movieId)"></tr>
+      <tr mat-row *matRowDef="let movie; columns: displayedColumns;"></tr>
     </table>
     <mat-paginator [pageSizeOptions]="[10, 50, 100]" showFirstLastButtons></mat-paginator>
   </div>

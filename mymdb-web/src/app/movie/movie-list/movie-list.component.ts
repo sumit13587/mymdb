@@ -14,7 +14,7 @@ import {Location, LocationStrategy, PathLocationStrategy} from '@angular/common'
 export class MovieListComponent {
 
   movies: Array<any>;
-  displayedColumns: string[] = ['movieId', 'title', 'status', 'popularity', 'runtime', 'voteAverage', 'voteCount'];
+  displayedColumns: string[] = ['movieId', 'title', 'status', 'popularity', 'runtime', 'voteAverage', 'voteCount', 'linkToDetails'];
   dataSource;
   @ViewChild(MatSort) sort: MatSort;
   @ViewChild(MatPaginator) paginator: MatPaginator;
@@ -45,21 +45,9 @@ export class MovieListComponent {
     this.dataSource.filter = filterText.trim().toLowerCase();
   }
 
-  viewMovieDetails(movieId: number) {
-    this.location.replaceState('/details/' + movieId);
-  }
-
   findByActor(actorName: string) {
-    if(!actorName) {
-      return;
-    }
     this.movieService.findByActor(actorName).subscribe(data => {
       this.movies = data;
-      this.dataSource = new MatTableDataSource(this.movies);
-      this.dataSource = new MatTableDataSource(this.movies);
-      this.dataSource.sort = this.sort;
-      this.dataSource.paginator = this.paginator;
-      this.dataSource.filterPredicate = this.filterStrategy;
     });
   }
 
