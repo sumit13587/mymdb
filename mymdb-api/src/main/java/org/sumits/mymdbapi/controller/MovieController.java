@@ -30,8 +30,6 @@ public class MovieController {
         return movieService.findMoviesByActor(personName);
     }
 
-    ;
-
     @GetMapping("/view")
     public Movie viewMovieDetails(@RequestParam int movieId) {
         Optional<Movie> result = movieService.getMovieDetails(movieId);
