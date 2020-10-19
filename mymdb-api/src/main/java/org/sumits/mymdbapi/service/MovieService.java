@@ -35,7 +35,7 @@ public class MovieService {
 
     @Transactional
     public List<Movie> listAllMovies() {
-        return (List<Movie>) movieRepository.findAll();
+        return movieRepository.findAll();
     }
 
     @Transactional
