@@ -48,31 +48,31 @@ public class Movie {
     private int voteCount;
 
     @JsonBackReference
-    @OneToMany(fetch = FetchType.LAZY,  mappedBy = "movie")
+    @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL, mappedBy = "movie")
     private List<MovieCast> movieCasts = new ArrayList<>();
 
     @JsonBackReference
-    @OneToMany(fetch = FetchType.LAZY,  mappedBy = "movie")
+    @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL, mappedBy = "movie")
     private List<MovieCrew> movieCrews = new ArrayList<>();
 
     @JsonBackReference
-    @OneToMany(fetch = FetchType.LAZY,  mappedBy = "movie")
+    @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL, mappedBy = "movie")
     private List<MovieCompany> movieCompanies = new ArrayList<>();
 
     @JsonBackReference
-    @OneToMany(fetch = FetchType.LAZY,  mappedBy = "movie")
+    @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL, mappedBy = "movie")
     private List<MovieGenre> movieGenres = new ArrayList<>();
 
     @JsonBackReference
-    @OneToMany(fetch = FetchType.LAZY,  mappedBy = "movie")
+    @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL, mappedBy = "movie")
     private List<MovieKeywords> movieKeywords = new ArrayList<>();
 
     @JsonBackReference
-    @OneToMany(fetch = FetchType.LAZY,  mappedBy = "movie")
+    @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL, mappedBy = "movie")
     private List<MovieLanguages> movieLanguages = new ArrayList<>();
 
     @JsonBackReference
-    @OneToMany(fetch = FetchType.LAZY,  mappedBy = "movie")
+    @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL, mappedBy = "movie")
     private List<ProductionCountry> productionCountries = new ArrayList<>();
 
     public int getMovieId() {

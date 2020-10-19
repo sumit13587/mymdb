@@ -14,18 +14,18 @@ import java.io.Serializable;
 public class MovieLanguages implements Serializable {
 
     @Id
-    @JoinColumn(name = "person_id")
+    @JoinColumn(name = "movie_id")
     @ManyToOne(fetch = FetchType.LAZY)
     @JsonManagedReference
     private Movie movie;
 
     @Id
-    @JoinColumn(name = "person_id")
+    @JoinColumn(name = "language_id")
     @ManyToOne(fetch = FetchType.LAZY)
     private Language language;
 
     @Id
-    @JoinColumn(name = "person_id")
+    @JoinColumn(name = "language_role_id")
     @ManyToOne(fetch = FetchType.LAZY)
     private LanguageRole languageRole;
 

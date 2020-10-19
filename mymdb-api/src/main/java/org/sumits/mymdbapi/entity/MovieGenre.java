@@ -10,7 +10,7 @@ import java.io.Serializable;
 @Entity
 @Data
 @NoArgsConstructor
-@Table(name = "movie_genre")
+@Table(name = "movie_genres")
 public class MovieGenre implements Serializable {
 
     @Id
