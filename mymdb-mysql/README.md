@@ -8,14 +8,14 @@ Here you can find a source code of the Docker image with MySQL set up. `MYSQL_RO
 
 Build image by running this command:
 
-    docker build -t triopsis-interview-fullstack:0.1  .
+    docker build -t mymdb-mysql:0.1  .
 
 Start container by running this command:
 
-    docker run -d --name interview-db --publish 3306:3306 triopsis-interview-fullstack:0.1
+    docker run -d --name mymdb-mysql --publish 3306:3306 mymdb-mysql:0.1
 
 When container is running, you can access MySQL using this command:
 
-    docker exec -it interview-db /bin/bash
+    docker exec -it mymdb-mysql /bin/bash
     mysql -u root --password=password movies
    
