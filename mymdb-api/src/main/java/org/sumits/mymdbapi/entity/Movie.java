@@ -1,10 +1,11 @@
 package org.sumits.mymdbapi.entity;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import net.minidev.json.annotate.JsonIgnore;
 
 import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -46,40 +47,33 @@ public class Movie {
     @Column(name = "vote_count")
     private int voteCount;
 
-//    @OneToMany
-//    @JoinColumn(name = "movie_id")
-//    @JsonIgnore
-//    private List<MovieCast> movieCasts;
-//
-//    @OneToMany
-//    @JoinColumn(name = "movie_id")
-//    @JsonIgnore
-//    private List<MovieCrew> movieCrews;
-//
-//    @OneToMany
-//    @JoinColumn(name = "movie_id")
-//    @JsonIgnore
-//    private List<MovieCompany> movieCompanies;
-//
-//    @OneToMany
-//    @JoinColumn(name = "movie_id")
-//    @JsonIgnore
-//    private List<MovieGenre> movieGenres;
-//
-//    @OneToMany
-//    @JoinColumn(name = "movie_id")
-//    @JsonIgnore
-//    private List<MovieKeywords> movieKeywords;
-//
-//    @OneToMany
-//    @JoinColumn(name = "movie_id")
-//    @JsonIgnore
-//    private List<MovieLanguages> movieLanguages;
-//
-//    @OneToMany
-//    @JoinColumn(name = "movie_id")
-//    @JsonIgnore
-//    private List<ProductionCountry> productionCountries;
+    @JsonBackReference
+    @OneToMany(fetch = FetchType.LAZY,  mappedBy = "movie")
+    private List<MovieCast> movieCasts = new ArrayList<>();
+
+    @JsonBackReference
+    @OneToMany(fetch = FetchType.LAZY,  mappedBy = "movie")
+    private List<MovieCrew> movieCrews = new ArrayList<>();
+
+    @JsonBackReference
+    @OneToMany(fetch = FetchType.LAZY,  mappedBy = "movie")
+    private List<MovieCompany> movieCompanies = new ArrayList<>();
+
+    @JsonBackReference
+    @OneToMany(fetch = FetchType.LAZY,  mappedBy = "movie")
+    private List<MovieGenre> movieGenres = new ArrayList<>();
+
+    @JsonBackReference
+    @OneToMany(fetch = FetchType.LAZY,  mappedBy = "movie")
+    private List<MovieKeywords> movieKeywords = new ArrayList<>();
+
+    @JsonBackReference
+    @OneToMany(fetch = FetchType.LAZY,  mappedBy = "movie")
+    private List<MovieLanguages> movieLanguages = new ArrayList<>();
+
+    @JsonBackReference
+    @OneToMany(fetch = FetchType.LAZY,  mappedBy = "movie")
+    private List<ProductionCountry> productionCountries = new ArrayList<>();
 
     public int getMovieId() {
         return movieId;
@@ -185,59 +179,59 @@ public class Movie {
         this.voteCount = voteCount;
     }
 
-//    public List<MovieCast> getMovieCasts() {
-//        return movieCasts;
-//    }
-//
-//    public void setMovieCasts(List<MovieCast> movieCasts) {
-//        this.movieCasts.addAll(movieCasts);
-//    }
-//
-//    public List<MovieCrew> getMovieCrews() {
-//        return movieCrews;
-//    }
-//
-//    public void setMovieCrews(List<MovieCrew> movieCrews) {
-//        this.movieCrews.addAll(movieCrews);
-//    }
-//
-//    public List<MovieCompany> getMovieCompanies() {
-//        return movieCompanies;
-//    }
-//
-//    public void setMovieCompanies(List<MovieCompany> movieCompanies) {
-//        this.movieCompanies.addAll(movieCompanies);
-//    }
-//
-//    public List<MovieGenre> getMovieGenres() {
-//        return movieGenres;
-//    }
-//
-//    public void setMovieGenres(List<MovieGenre> movieGenres) {
-//        this.movieGenres.addAll(movieGenres);
-//    }
-//
-//    public List<MovieKeywords> getMovieKeywords() {
-//        return movieKeywords;
-//    }
-//
-//    public void setMovieKeywords(List<MovieKeywords> movieKeywords) {
-//        this.movieKeywords.addAll(movieKeywords);
-//    }
-//
-//    public List<MovieLanguages> getMovieLanguages() {
-//        return movieLanguages;
-//    }
-//
-//    public void setMovieLanguages(List<MovieLanguages> movieLanguages) {
-//        this.movieLanguages.addAll(movieLanguages);
-//    }
-//
-//    public List<ProductionCountry> getProductionCountries() {
-//        return productionCountries;
-//    }
-//
-//    public void setProductionCountries(List<ProductionCountry> productionCountries) {
-//        this.productionCountries.addAll(productionCountries);
-//    }
+    public List<MovieCast> getMovieCasts() {
+        return movieCasts;
+    }
+
+    public void setMovieCasts(List<MovieCast> movieCasts) {
+        this.movieCasts.addAll(movieCasts);
+    }
+
+    public List<MovieCrew> getMovieCrews() {
+        return movieCrews;
+    }
+
+    public void setMovieCrews(List<MovieCrew> movieCrews) {
+        this.movieCrews.addAll(movieCrews);
+    }
+
+    public List<MovieCompany> getMovieCompanies() {
+        return movieCompanies;
+    }
+
+    public void setMovieCompanies(List<MovieCompany> movieCompanies) {
+        this.movieCompanies.addAll(movieCompanies);
+    }
+
+    public List<MovieGenre> getMovieGenres() {
+        return movieGenres;
+    }
+
+    public void setMovieGenres(List<MovieGenre> movieGenres) {
+        this.movieGenres.addAll(movieGenres);
+    }
+
+    public List<MovieKeywords> getMovieKeywords() {
+        return movieKeywords;
+    }
+
+    public void setMovieKeywords(List<MovieKeywords> movieKeywords) {
+        this.movieKeywords.addAll(movieKeywords);
+    }
+
+    public List<MovieLanguages> getMovieLanguages() {
+        return movieLanguages;
+    }
+
+    public void setMovieLanguages(List<MovieLanguages> movieLanguages) {
+        this.movieLanguages.addAll(movieLanguages);
+    }
+
+    public List<ProductionCountry> getProductionCountries() {
+        return productionCountries;
+    }
+
+    public void setProductionCountries(List<ProductionCountry> productionCountries) {
+        this.productionCountries.addAll(productionCountries);
+    }
 }

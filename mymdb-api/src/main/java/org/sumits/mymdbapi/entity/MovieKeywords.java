@@ -1,5 +1,6 @@
 package org.sumits.mymdbapi.entity;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
@@ -14,12 +15,13 @@ public class MovieKeywords implements Serializable {
 
     @Id
     @JoinColumn(name = "movie_id")
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JsonManagedReference
     private Movie movie;
 
     @Id
     @JoinColumn(name = "keyword_id")
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     private Keyword keyword;
 
     public Movie getMovie() {
