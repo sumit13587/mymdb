@@ -7,11 +7,11 @@ import { PageNotFoundComponent } from './page-not-found/page-not-found.component
 
 const appRoutes: Routes = [
   {
-    path: 'list',
+    path: 'movies/list',
     component: MovieListComponent
   },
   {
-    path: 'details/:movieId',
+    path: 'movies/details/:movieId',
     component: MovieDetailsComponent
   },
   {
