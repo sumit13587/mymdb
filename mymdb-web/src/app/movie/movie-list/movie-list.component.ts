@@ -45,11 +45,15 @@ export class MovieListComponent {
     this.dataSource.filter = filterText.trim().toLowerCase();
   }
 
-  findByActor(actorName: string) {
-    this.movieService.findByActor(actorName).subscribe(data => {
-      this.movies = data;
-    });
-  }
+  findByActor(actorName: string): void {
+      console.log("In findByActor")
+      this.movieService.findByActor(actorName).subscribe(data => {
+        this.dataSource = new MatTableDataSource(<any>data);
+        this.dataSource.sort = this.sort;
+        this.dataSource.paginator = this.paginator;
+        this.dataSource.filterPredicate = this.filterStrategy;
+      });
+    }
 
   deleteMovie(movieId: number) {
     this.movieService.deleteMovie(movieId).subscribe(data => {
