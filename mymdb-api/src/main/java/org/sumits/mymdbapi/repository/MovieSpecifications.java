@@ -4,13 +4,10 @@ import org.springframework.data.jpa.domain.Specification;
 import org.sumits.mymdbapi.entity.Movie;
 
 public final class MovieSpecifications {
-    private MovieSpecifications() {
-    }
+    private MovieSpecifications() { }
 
     public static Specification<Movie> hasActor(int personId) {
-        return (root, query, cb) -> {
-            return cb.equal(root.join("movieCast").join("person")
-                    .get("personId"), personId);
-        };
+        return (root, query, cb) -> cb.equal(root.joinList("movieCasts").get("person")
+                .get("personId"), personId);
     }
 }
