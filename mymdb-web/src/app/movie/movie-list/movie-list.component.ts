@@ -52,7 +52,6 @@ export class MovieListComponent {
   }
 
   findByActor(): void {
-    console.log("actorNameToSearch: " + this.actorNameToSearch);
     this.movieService.findByActor(this.actorNameToSearch).subscribe(data => {
       this.dataSource = new MatTableDataSource<MovieInterface>(data);
       this.dataSource.sort = this.sort;
