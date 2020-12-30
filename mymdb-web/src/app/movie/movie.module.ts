@@ -1,4 +1,5 @@
 import { CommonModule } from "@angular/common";
+import { FormsModule } from '@angular/forms';
 import { NgModule } from "@angular/core";
 import { MovieDetailsComponent } from "./movie-details/movie-details.component";
 import { MovieListComponent } from "./movie-list/movie-list.component";
@@ -13,6 +14,7 @@ import { MatTableModule } from '@angular/material/table';
     declarations: [MovieListComponent, MovieDetailsComponent],
     imports: [
         CommonModule,
+        FormsModule,
         MatTableModule,
         MatSortModule,
         MatPaginatorModule,

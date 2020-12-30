@@ -15,6 +15,7 @@ import { MovieInterface } from 'src/app/types/movie.interface';
 export class MovieListComponent {
 
   movies: MovieInterface[];
+  actorNameToSearch: string = '';
   displayedColumns: string[] = ['movieId', 'title', 'status', 'popularity', 'runtime', 'voteAverage', 'voteCount', 'linkToDetails', 'deleteLink'];
   dataSource: MatTableDataSource<MovieInterface>;
   @ViewChild(MatSort) sort: MatSort;
@@ -23,6 +24,10 @@ export class MovieListComponent {
   constructor(private movieService: MovieService, private location: Location) { }
 
   ngOnInit() {
+    this.listAllMovies();
+  }
+
+  listAllMovies() {
     this.movieService.listAll().subscribe(data => {
       this.movies = <MovieInterface[]>data;
       this.dataSource = new MatTableDataSource<MovieInterface>(this.movies);
@@ -46,15 +51,20 @@ export class MovieListComponent {
     this.dataSource.filter = filterText.trim().toLowerCase();
   }
 
-  findByActor(actorName: string): void {
-      console.log("In findByActor")
-      this.movieService.findByActor(actorName).subscribe(data => {
-        this.dataSource = new MatTableDataSource<MovieInterface>(data);
-        this.dataSource.sort = this.sort;
-        this.dataSource.paginator = this.paginator;
-        this.dataSource.filterPredicate = this.filterStrategy;
-      });
-    }
+  findByActor(): void {
+    console.log("actorNameToSearch: " + this.actorNameToSearch);
+    this.movieService.findByActor(this.actorNameToSearch).subscribe(data => {
+      this.dataSource = new MatTableDataSource<MovieInterface>(data);
+      this.dataSource.sort = this.sort;
+      this.dataSource.paginator = this.paginator;
+      this.dataSource.filterPredicate = this.filterStrategy;
+    });
+  }
+
+  resetSearch() {
+    this.actorNameToSearch = '';
+    this.listAllMovies();
+  }
 
   deleteMovie(movieId: number) {
     this.movieService.deleteMovie(movieId).subscribe(data => {

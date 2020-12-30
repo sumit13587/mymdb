@@ -5,10 +5,13 @@
         <input (keyup)="applyFilter($event.target.value)" matInput placeholder="Search Text"/>
       </mat-form-field>
       <mat-form-field [style.width.px]=400 class="example-full-width">
-        <input #actorToSearch matInput placeholder="Search By Actor/Actress Name"/>
+        <input #actorToSearch matInput placeholder="Search By Actor/Actress Name" name="actorNameToSearch" [(ngModel)]="actorNameToSearch"/>
       </mat-form-field>
-      <button type="button" mat-button class="md-raised" (click)="findByActor(actorToSearch.value)">
+      <button type="button" mat-button class="md-raised" (click)="findByActor()">
         <mat-icon class="material-icons">search</mat-icon>
+      </button>
+      <button type="button" mat-button class="md-raised" (click)="resetSearch()">
+        <mat-icon class="material-icons">cached</mat-icon>
       </button>
       <button mat-button [style.margin-left.px]=450 class="md-raised">
         <mat-icon class="material-icons">add</mat-icon>
