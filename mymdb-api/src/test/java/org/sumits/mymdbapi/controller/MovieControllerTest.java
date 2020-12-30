@@ -5,6 +5,7 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
+import org.sumits.mymdbapi.domain.MovieDomain;
 import org.sumits.mymdbapi.entity.Movie;
 import org.sumits.mymdbapi.service.MovieService;
 
@@ -31,13 +32,13 @@ class MovieControllerTest {
 
     @Test
     void listMovies() {
-        when(mockMovieService.listAllMovies()).thenReturn(Collections.singletonList(new Movie()));
+        when(mockMovieService.listAllMovies()).thenReturn(Collections.singletonList(new MovieDomain()));
         assertEquals(1, classUnderTest.listMovies().size());
     }
 
     @Test
     void listMoviesByActor() {
-        when(mockMovieService.findMoviesByActor(anyString())).thenReturn(Collections.singletonList(new Movie()));
+        when(mockMovieService.findMoviesByActor(anyString())).thenReturn(Collections.singletonList(new MovieDomain()));
         assertEquals(1, classUnderTest.listMoviesByActor("My Favorite Actor").size());
     }
 

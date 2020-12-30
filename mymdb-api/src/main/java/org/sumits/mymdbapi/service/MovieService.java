@@ -3,6 +3,7 @@ package org.sumits.mymdbapi.service;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Service;
+import org.sumits.mymdbapi.domain.MovieDomain;
 import org.sumits.mymdbapi.entity.Movie;
 import org.sumits.mymdbapi.entity.Person;
 import org.sumits.mymdbapi.repository.MovieRepository;
@@ -14,6 +15,8 @@ import javax.persistence.PersistenceContext;
 import javax.transaction.Transactional;
 import java.util.List;
 import java.util.Optional;
+
+import static org.sumits.mymdbapi.mapper.MovieMapper.toDomains;
 
 @Service
 @Transactional
@@ -34,15 +37,15 @@ public class MovieService {
     }
 
     @Transactional
-    public List<Movie> listAllMovies() {
-        return movieRepository.findAll();
+    public List<MovieDomain> listAllMovies() {
+        return toDomains(movieRepository.findAll());
     }
 
     @Transactional
-    public List<Movie> findMoviesByActor(String personName) {
+    public List<MovieDomain> findMoviesByActor(String personName) {
         Person person = personRepository.findByPersonName(personName);
         Specification<Movie> spec = MovieSpecifications.hasActor(person.getPersonId());
-        return movieRepository.findAll(spec);
+        return toDomains(movieRepository.findAll(spec));
     }
 
     @Transactional
@@ -59,4 +62,5 @@ public class MovieService {
     public void deleteMovieById(int movieId) {
         movieRepository.deleteById(movieId);
     }
+
 }

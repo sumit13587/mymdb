@@ -2,6 +2,7 @@ package org.sumits.mymdbapi.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+import org.sumits.mymdbapi.domain.MovieDomain;
 import org.sumits.mymdbapi.entity.Movie;
 import org.sumits.mymdbapi.service.MovieService;
 
@@ -21,12 +22,12 @@ public class MovieController {
     }
 
     @GetMapping("/list")
-    public List<Movie> listMovies() {
+    public List<MovieDomain> listMovies() {
         return movieService.listAllMovies();
     }
 
     @GetMapping("/findByActor")
-    public List<Movie> listMoviesByActor(@RequestParam String personName) {
+    public List<MovieDomain> listMoviesByActor(@RequestParam String personName) {
         return movieService.findMoviesByActor(personName);
     }
 
