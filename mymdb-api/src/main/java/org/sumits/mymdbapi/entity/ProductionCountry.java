@@ -1,6 +1,5 @@
 package org.sumits.mymdbapi.entity;
 
-import com.fasterxml.jackson.annotation.JsonManagedReference;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
@@ -16,7 +15,6 @@ public class ProductionCountry implements Serializable {
     @Id
     @JoinColumn(name = "movie_id")
     @ManyToOne(fetch = FetchType.LAZY)
-    @JsonManagedReference
     private Movie movie;
 
     @Id

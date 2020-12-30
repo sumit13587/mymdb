@@ -1,7 +1,5 @@
 package org.sumits.mymdbapi.entity;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonManagedReference;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
@@ -17,8 +15,6 @@ public class MovieCast implements Serializable {
     @Id
     @JoinColumn(name = "movie_id")
     @ManyToOne(fetch = FetchType.LAZY)
-    @JsonManagedReference
-    @JsonIgnore
     private Movie movie;
 
     @Id

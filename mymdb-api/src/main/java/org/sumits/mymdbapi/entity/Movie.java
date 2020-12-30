@@ -1,6 +1,5 @@
 package org.sumits.mymdbapi.entity;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
@@ -47,31 +46,24 @@ public class Movie {
     @Column(name = "vote_count")
     private int voteCount;
 
-    @JsonBackReference
     @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL, mappedBy = "movie")
     private List<MovieCast> movieCasts = new ArrayList<>();
 
-    @JsonBackReference
     @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL, mappedBy = "movie")
     private List<MovieCrew> movieCrews = new ArrayList<>();
 
-    @JsonBackReference
     @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL, mappedBy = "movie")
     private List<MovieCompany> movieCompanies = new ArrayList<>();
 
-    @JsonBackReference
     @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL, mappedBy = "movie")
     private List<MovieGenre> movieGenres = new ArrayList<>();
 
-    @JsonBackReference
     @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL, mappedBy = "movie")
     private List<MovieKeywords> movieKeywords = new ArrayList<>();
 
-    @JsonBackReference
     @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL, mappedBy = "movie")
     private List<MovieLanguages> movieLanguages = new ArrayList<>();
 
-    @JsonBackReference
     @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL, mappedBy = "movie")
     private List<ProductionCountry> productionCountries = new ArrayList<>();
 
