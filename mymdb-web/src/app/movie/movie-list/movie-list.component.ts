@@ -4,6 +4,7 @@ import { MatTableDataSource } from '@angular/material/table';
 import { MatSort } from '@angular/material/sort';
 import { MatPaginator } from '@angular/material/paginator';
 import {Location, LocationStrategy, PathLocationStrategy} from '@angular/common';
+import { MovieInterface } from 'src/app/types/movie.interface';
 
 @Component({
   selector: 'app-movie-list',
@@ -13,9 +14,9 @@ import {Location, LocationStrategy, PathLocationStrategy} from '@angular/common'
 })
 export class MovieListComponent {
 
-  movies: Array<any>;
+  movies: MovieInterface[];
   displayedColumns: string[] = ['movieId', 'title', 'status', 'popularity', 'runtime', 'voteAverage', 'voteCount', 'linkToDetails', 'deleteLink'];
-  dataSource;
+  dataSource: MatTableDataSource<MovieInterface>;
   @ViewChild(MatSort) sort: MatSort;
   @ViewChild(MatPaginator) paginator: MatPaginator;
 
@@ -23,22 +24,22 @@ export class MovieListComponent {
 
   ngOnInit() {
     this.movieService.listAll().subscribe(data => {
-      this.movies = data;
-      this.dataSource = new MatTableDataSource(this.movies);
+      this.movies = <MovieInterface[]>data;
+      this.dataSource = new MatTableDataSource<MovieInterface>(this.movies);
       this.dataSource.sort = this.sort;
       this.dataSource.paginator = this.paginator;
       this.dataSource.filterPredicate = this.filterStrategy;
     });
   }
 
-  filterStrategy(data, filter: string): boolean {
-    return data.movieId === filter ||
+  filterStrategy(data: MovieInterface, filter: string): boolean {
+    return String(data.movieId) === filter ||
                   data.title.toLowerCase().includes(filter) ||
                   data.movieStatus.toLowerCase() === filter ||
-                  data.runtime.toString() === filter ||
-                  data.voteAverage.toString() === filter ||
-                  data.voteCount.toString() == filter ||
-                  data.popularity.toString() === filter;
+                  String(data.runtime) === filter ||
+                  String(data.voteAverage) === filter ||
+                  String(data.voteCount) == filter ||
+                  String(data.popularity) === filter;
   }
 
   applyFilter(filterText: string) {
@@ -48,7 +49,7 @@ export class MovieListComponent {
   findByActor(actorName: string): void {
       console.log("In findByActor")
       this.movieService.findByActor(actorName).subscribe(data => {
-        this.dataSource = new MatTableDataSource(<any>data);
+        this.dataSource = new MatTableDataSource<MovieInterface>(data);
         this.dataSource.sort = this.sort;
         this.dataSource.paginator = this.paginator;
         this.dataSource.filterPredicate = this.filterStrategy;
