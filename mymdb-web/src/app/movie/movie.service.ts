@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { HttpClientHelper } from 'src/app/helpers/httpclient.helper'
 
 @Injectable({
   providedIn: 'root'
@@ -11,18 +12,18 @@ export class MovieService {
   }
 
   listAll(): Observable<any> {
-    return this.http.get('//localhost:8080/movies/list');
+    return this.http.get(`${HttpClientHelper.baseURL}/movies/list`);
   }
 
   getMovieDetails(movieId: number): Observable<any> {
-    return this.http.get('//localhost:8080/movies/view?movieId=' + movieId);
+    return this.http.get(`${HttpClientHelper.baseURL}/movies/view?movieId=` + movieId);
   }
 
   findByActor(actorName: string): Observable<any> {
-    return this.http.get('//localhost:8080/movies/findByActor?personName=' + actorName);
+    return this.http.get(`${HttpClientHelper.baseURL}/movies/findByActor?personName=` + actorName);
   }
 
   async deleteMovie(movieId: number) {
-    return await this.http.delete('//localhost:8080/movies/delete?movieId=' + movieId).toPromise();
+    return await this.http.delete(`${HttpClientHelper.baseURL}/movies/delete?movieId=` + movieId).toPromise();
   }
 }
