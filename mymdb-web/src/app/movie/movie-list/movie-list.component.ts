@@ -65,10 +65,14 @@ export class MovieListComponent {
     this.listAllMovies();
   }
 
-  deleteMovie(movieId: number) {
-    this.movieService.deleteMovie(movieId).subscribe(data => {
-      console.log("Is the movie deleted?");
-    });
+  async deleteMovie(movieId: number) {
+    const result = await this.movieService.deleteMovie(movieId);
+    if(result) {
+      alert("Movie deleted successfully");
+      this.listAllMovies();
+    } else {
+      alert("Failed to delete movie");
+    }
   }
 
 }

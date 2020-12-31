@@ -22,7 +22,7 @@ export class MovieService {
     return this.http.get('//localhost:8080/movies/findByActor?personName=' + actorName);
   }
 
-  deleteMovie(movieId: number): Observable<any> {
-    return this.http.delete('//localhost:8080/movies/delete?movieId=' + movieId);
+  async deleteMovie(movieId: number) {
+    return await this.http.delete('//localhost:8080/movies/delete?movieId=' + movieId).toPromise();
   }
 }

@@ -70,11 +70,9 @@
       <ng-container matColumnDef="deleteLink">
         <th mat-header-cell *matHeaderCellDef></th>
         <td mat-cell *matCellDef="let movie">
-          <a href="javascript:void(0)" (click)="deleteMovie(movie.movieId)">
-            <span class="material-icons">
-              delete
-            </span>
-          </a>
+          <button type="submit" mat-button class="md-raised">
+            <mat-icon class="material-icons" (click)="deleteMovie(movie.movieId)">delete</mat-icon>
+          </button>
         </td>
       </ng-container>
 

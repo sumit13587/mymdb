@@ -18,16 +18,17 @@ public class MovieCrew implements Serializable {
     private Person person;
 
     @Id
-    @JoinColumn(name = "person_id")
+    @JoinColumn(name = "movie_id")
     @ManyToOne(fetch = FetchType.LAZY)
     private Movie movie;
 
-    @JoinColumn(name = "person_id")
+    @Id
+    @JoinColumn(name = "department_id")
     @ManyToOne(fetch = FetchType.LAZY)
     private Department department;
 
+    @Id
     private String job;
-
 
     public Person getPerson() {
         return person;
