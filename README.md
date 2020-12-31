@@ -1,5 +1,7 @@
 # My Movie Database (mymdb)
 
-### mymdb-api - REST API in spring boot
-### mymdb-web - Angular front end
-### mymdb-mysql - Docker image for mysql database
+Folders inside this repo:
+
+* [mymdb-api](mymdb-api) - REST API in spring boot
+* [mymdb-web](mymdb-web) - Angular front end
+* [mymdb-mysql](mymdb-mysql) - Docker image for mysql database
