@@ -6,6 +6,7 @@ import org.springframework.stereotype.Service;
 import org.sumits.mymdbapi.domain.MovieDomain;
 import org.sumits.mymdbapi.entity.Movie;
 import org.sumits.mymdbapi.entity.Person;
+import org.sumits.mymdbapi.mapper.MovieMapper;
 import org.sumits.mymdbapi.repository.MovieRepository;
 import org.sumits.mymdbapi.repository.MovieSpecifications;
 import org.sumits.mymdbapi.repository.PersonRepository;
@@ -16,6 +17,7 @@ import javax.transaction.Transactional;
 import java.util.List;
 import java.util.Optional;
 
+import static org.sumits.mymdbapi.mapper.MovieMapper.toDomain;
 import static org.sumits.mymdbapi.mapper.MovieMapper.toDomains;
 
 @Service
@@ -49,13 +51,14 @@ public class MovieService {
     }
 
     @Transactional
-    public Optional<Movie> getMovieDetails(int movieId) {
-        return movieRepository.findById(movieId);
+    public MovieDomain getMovieDetails(int movieId) {
+        Optional<Movie> movie = movieRepository.findById(movieId);
+        return movie.map(MovieMapper::toDomain).orElse(null);
     }
 
     @Transactional
-    public Movie addNewMovie(Movie movie) {
-        return movieRepository.save(movie);
+    public MovieDomain addNewMovie(Movie movie) {
+        return toDomain(movieRepository.save(movie));
     }
 
     @Transactional

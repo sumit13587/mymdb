@@ -6,6 +6,7 @@ import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 import org.springframework.data.jpa.domain.Specification;
+import org.sumits.mymdbapi.domain.MovieDomain;
 import org.sumits.mymdbapi.entity.Movie;
 import org.sumits.mymdbapi.entity.Person;
 import org.sumits.mymdbapi.repository.MovieRepository;
@@ -15,7 +16,6 @@ import java.util.Collections;
 import java.util.Optional;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.mockito.ArgumentMatchers.*;
 import static org.mockito.Mockito.*;
 
@@ -57,10 +57,9 @@ class MovieServiceTest {
     @Test
     void getMovieDetails() {
         when(mockMovieRepository.findById(anyInt())).thenReturn(Optional.of(stubMovie()));
-        Optional<Movie> result = classUnderTest.getMovieDetails(101);
-        assertTrue(result.isPresent());
-        assertEquals(101, result.get().getMovieId());
-        assertEquals("My Favorite Movie", result.get().getTitle());
+        MovieDomain result = classUnderTest.getMovieDetails(101);
+        assertEquals(101, result.getMovieId());
+        assertEquals("My Favorite Movie", result.getTitle());
     }
 
     private Movie stubMovie() {
@@ -73,7 +72,7 @@ class MovieServiceTest {
     @Test
     void addNewMovie() {
         when(mockMovieRepository.save(any(Movie.class))).thenReturn(stubMovie());
-        Movie newMovie = classUnderTest.addNewMovie(new Movie());
+        MovieDomain newMovie = classUnderTest.addNewMovie(new Movie());
         assertEquals(101, newMovie.getMovieId());
         assertEquals("My Favorite Movie", newMovie.getTitle());
     }

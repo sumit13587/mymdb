@@ -7,7 +7,6 @@ import org.sumits.mymdbapi.entity.Movie;
 import org.sumits.mymdbapi.service.MovieService;
 
 import java.util.List;
-import java.util.Optional;
 
 @RestController
 @CrossOrigin(origins = "http://localhost:4200")
@@ -32,21 +31,21 @@ public class MovieController {
     }
 
     @GetMapping("/view")
-    public Movie viewMovieDetails(@RequestParam int movieId) {
-        Optional<Movie> result = movieService.getMovieDetails(movieId);
-        return result.orElse(null);
+    public MovieDomain viewMovieDetails(@RequestParam int movieId) {
+        MovieDomain result = movieService.getMovieDetails(movieId);
+        return result;
     }
 
     @PostMapping("/add")
-    public Movie addMovie(@RequestBody Movie movie) {
+    public MovieDomain addMovie(@RequestBody Movie movie) {
         return movieService.addNewMovie(movie);
     }
 
     @DeleteMapping("/delete")
     public boolean deleteMovie(@RequestParam int movieId) {
         movieService.deleteMovieById(movieId);
-        Optional<Movie> result = movieService.getMovieDetails(movieId);
-        return result.isEmpty();
+        MovieDomain result = movieService.getMovieDetails(movieId);
+        return result == null;
     }
 
 }
